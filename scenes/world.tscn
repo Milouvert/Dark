@@ -1,0 +1,105 @@
+[gd_scene load_steps=11 format=3 uid="uid://bqlpqre5x1pvw"]
+
+[ext_resource type="Script" path="res://scripts/world.gd" id="1_8ld2i"]
+[ext_resource type="PackedScene" uid="uid://cvqv8qer6c10e" path="res://scenes/assets/ground.tscn" id="1_nlgwa"]
+[ext_resource type="PackedScene" uid="uid://cqhstaabfssnt" path="res://scenes/assets/campfire.tscn" id="3_p2k0c"]
+[ext_resource type="PackedScene" uid="uid://n4a4pdrrltvb" path="res://blender/pine.blend" id="4_i0gcr"]
+[ext_resource type="PackedScene" uid="uid://bkxyw1e7m7jat" path="res://blender/tree.blend" id="5_u48i0"]
+[ext_resource type="AudioStream" uid="uid://b2uxpt2ggo0u0" path="res://audio/night.mp3" id="6_orryp"]
+[ext_resource type="PackedScene" uid="uid://bsb48pfvokwyk" path="res://scenes/assets/moon.tscn" id="7_cpnh0"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_yvhsq"]
+sky_top_color = Color(0.0588235, 0.0784314, 0.164706, 1)
+sky_horizon_color = Color(0.579412, 0.57451, 0.585294, 1)
+sky_energy_multiplier = 0.2
+ground_bottom_color = Color(0.258824, 0.219608, 0.176471, 1)
+ground_horizon_color = Color(0.579412, 0.57451, 0.585294, 1)
+
+[sub_resource type="Sky" id="Sky_agukp"]
+sky_material = SubResource("ProceduralSkyMaterial_yvhsq")
+
+[sub_resource type="Environment" id="Environment_w6mqk"]
+background_mode = 2
+sky = SubResource("Sky_agukp")
+tonemap_mode = 2
+ssao_enabled = true
+sdfgi_enabled = true
+glow_enabled = true
+fog_light_color = Color(0.168627, 0.184314, 0.211765, 1)
+volumetric_fog_enabled = true
+volumetric_fog_density = 0.1
+
+[node name="world" type="Node3D"]
+script = ExtResource("1_8ld2i")
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_w6mqk")
+
+[node name="ground" parent="." instance=ExtResource("1_nlgwa")]
+
+[node name="campfire" parent="." instance=ExtResource("3_p2k0c")]
+transform = Transform3D(0.75, 0, 0, 0, 0.75, 0, 0, 0, 0.75, 0, 0.1, 0)
+
+[node name="trees" type="Node3D" parent="."]
+
+[node name="pine" parent="trees" instance=ExtResource("4_i0gcr")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -16.6869, 0, 1.02105)
+
+[node name="pine2" parent="trees" instance=ExtResource("4_i0gcr")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.80024, 0, -11.623)
+
+[node name="pine3" parent="trees" instance=ExtResource("4_i0gcr")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.1981, 0, -9.3856)
+
+[node name="pine4" parent="trees" instance=ExtResource("4_i0gcr")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 21.1212, 0, -7.94426)
+
+[node name="pine5" parent="trees" instance=ExtResource("4_i0gcr")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 21.3984, 0, 14.3411)
+
+[node name="pine6" parent="trees" instance=ExtResource("4_i0gcr")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -16.0764, 0, 11.9573)
+
+[node name="tree" parent="trees" instance=ExtResource("5_u48i0")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -20.6222, 0, -6.66923)
+
+[node name="tree2" parent="trees" instance=ExtResource("5_u48i0")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -22.5625, 0, 5.24954)
+
+[node name="tree3" parent="trees" instance=ExtResource("5_u48i0")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.93592, 0, 17.002)
+
+[node name="tree4" parent="trees" instance=ExtResource("5_u48i0")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.5286, 0, 18.5542)
+
+[node name="tree5" parent="trees" instance=ExtResource("5_u48i0")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 23.505, 0, -1.62454)
+
+[node name="tree6" parent="trees" instance=ExtResource("5_u48i0")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 25.5007, 0, 9.51812)
+
+[node name="pine7" parent="trees" instance=ExtResource("4_i0gcr")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14.7461, 0, 9.0192)
+
+[node name="pine8" parent="trees" instance=ExtResource("4_i0gcr")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.9721, 0, -6.66923)
+
+[node name="pine9" parent="trees" instance=ExtResource("4_i0gcr")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14.0807, 0, 23.3217)
+
+[node name="pine10" parent="trees" instance=ExtResource("4_i0gcr")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -19.4026, 0, -19.1424)
+
+[node name="tree7" parent="trees" instance=ExtResource("5_u48i0")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.38156, 0, -19.475)
+
+[node name="tree8" parent="trees" instance=ExtResource("5_u48i0")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11.7525, 0, -15.4281)
+
+[node name="NightAudio" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("6_orryp")
+volume_db = -25.0
+autoplay = true
+
+[node name="moon" parent="." instance=ExtResource("7_cpnh0")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 19.3713, 0)

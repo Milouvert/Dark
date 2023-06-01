@@ -1,0 +1,14 @@
+[gd_scene load_steps=4 format=3 uid="uid://bpo4xw8b1gi6a"]
+
+[ext_resource type="PackedScene" uid="uid://bqlpqre5x1pvw" path="res://scenes/world.tscn" id="1_p5jtc"]
+[ext_resource type="PackedScene" uid="uid://bsc2vaqlbyejn" path="res://scenes/assets/player.tscn" id="2_4feqx"]
+[ext_resource type="PackedScene" uid="uid://xi3lpw1qpqc6" path="res://scenes/assets/FPSLabel.tscn" id="3_gpggm"]
+
+[node name="Game" type="Node3D"]
+
+[node name="world" parent="." instance=ExtResource("1_p5jtc")]
+
+[node name="player" parent="." instance=ExtResource("2_4feqx")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 7.79726)
+
+[node name="FPSLabel" parent="." instance=ExtResource("3_gpggm")]

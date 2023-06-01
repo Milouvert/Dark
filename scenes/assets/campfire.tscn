@@ -1,0 +1,93 @@
+[gd_scene load_steps=12 format=3 uid="uid://cqhstaabfssnt"]
+
+[ext_resource type="Script" path="res://scripts/campfire.gd" id="1_hn33l"]
+[ext_resource type="PackedScene" uid="uid://eq04llofyghv" path="res://scenes/assets/fire.tscn" id="2_b5tb7"]
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_0fq53"]
+radius = 2.5
+
+[sub_resource type="Gradient" id="Gradient_cq4sn"]
+colors = PackedColorArray(0.902416, 0.141257, 0.00118286, 1, 0.785941, 0.378024, 0.00910692, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_30les"]
+gradient = SubResource("Gradient_cq4sn")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_l8r4v"]
+lifetime_randomness = 1.0
+emission_shape = 3
+emission_box_extents = Vector3(0.5, 0.5, 0.5)
+direction = Vector3(0, 1, 0)
+spread = 0.0
+gravity = Vector3(0, 0, 0)
+initial_velocity_min = 0.5
+initial_velocity_max = 1.0
+tangential_accel_min = 0.5
+tangential_accel_max = 1.0
+scale_min = 0.2
+scale_max = 0.7
+color_ramp = SubResource("GradientTexture1D_30les")
+hue_variation_min = -0.02
+hue_variation_max = 0.02
+turbulence_enabled = true
+turbulence_noise_strength = 0.5
+turbulence_noise_scale = 10.0
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_5h2s6"]
+transparency = 1
+blend_mode = 1
+shading_mode = 0
+vertex_color_use_as_albedo = true
+albedo_color = Color(1, 1, 1, 0.380392)
+
+[sub_resource type="SphereMesh" id="SphereMesh_7ou77"]
+material = SubResource("StandardMaterial3D_5h2s6")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_m8wgl"]
+emission_shape = 3
+emission_box_extents = Vector3(0.25, 0.25, 0.25)
+direction = Vector3(0, 1, 0)
+spread = 15.0
+gravity = Vector3(0, 0, 0)
+initial_velocity_min = 3.0
+initial_velocity_max = 5.0
+turbulence_noise_strength = 0.2
+turbulence_noise_speed = Vector3(0.2, 0, 0.2)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_k0wht"]
+transparency = 1
+shading_mode = 0
+vertex_color_use_as_albedo = true
+albedo_color = Color(1, 1, 1, 0.0117647)
+
+[sub_resource type="SphereMesh" id="SphereMesh_c7245"]
+material = SubResource("StandardMaterial3D_k0wht")
+
+[node name="campfire" type="StaticBody3D"]
+script = ExtResource("1_hn33l")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.631446, 0)
+shape = SubResource("CylinderShape3D_0fq53")
+
+[node name="OmniLight3D" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.32705, 0)
+light_color = Color(0.835294, 0.454902, 0.298039, 1)
+shadow_enabled = true
+
+[node name="FireParticles" type="GPUParticles3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.853281, 0)
+amount = 100
+process_material = SubResource("ParticleProcessMaterial_l8r4v")
+draw_pass_1 = SubResource("SphereMesh_7ou77")
+
+[node name="SmokeParticles" type="GPUParticles3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.32051, 0)
+amount = 20
+lifetime = 5.0
+process_material = SubResource("ParticleProcessMaterial_m8wgl")
+draw_pass_1 = SubResource("SphereMesh_c7245")
+
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="."]
+volume_db = -10.0
+
+[node name="fire" parent="." instance=ExtResource("2_b5tb7")]

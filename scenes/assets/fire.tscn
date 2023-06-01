@@ -1,0 +1,24 @@
+[gd_scene load_steps=6 format=3 uid="uid://eq04llofyghv"]
+
+[ext_resource type="PackedScene" uid="uid://dxdc23ag1f2yf" path="res://blender/fire.blend" id="1_v4k2m"]
+[ext_resource type="Shader" path="res://shaders/coal.gdshader" id="2_b6g7d"]
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_1ghe1"]
+noise_type = 3
+frequency = 0.05
+fractal_type = 0
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_u816b"]
+noise = SubResource("FastNoiseLite_1ghe1")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_pacbe"]
+render_priority = 0
+shader = ExtResource("2_b6g7d")
+shader_parameter/glow = Color(1, 0.25, 0, 1)
+shader_parameter/dark = Color(0, 0, 0, 1)
+shader_parameter/noise = SubResource("NoiseTexture2D_u816b")
+
+[node name="fire" instance=ExtResource("1_v4k2m")]
+
+[node name="coal_circle" parent="." index="2"]
+surface_material_override/0 = SubResource("ShaderMaterial_pacbe")

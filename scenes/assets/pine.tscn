@@ -1,0 +1,18 @@
+[gd_scene load_steps=3 format=3 uid="uid://cyb8xai2fuawg"]
+
+[ext_resource type="PackedScene" uid="uid://n4a4pdrrltvb" path="res://blender/pine.blend" id="1_6c4jn"]
+[ext_resource type="Material" uid="uid://vflcmkd4b5w1" path="res://materials/pine_leaf.tres" id="2_ijpj4"]
+
+[node name="pine" instance=ExtResource("1_6c4jn")]
+
+[node name="leaf001" parent="." index="1"]
+surface_material_override/0 = ExtResource("2_ijpj4")
+
+[node name="leaf" parent="." index="2"]
+surface_material_override/0 = ExtResource("2_ijpj4")
+
+[node name="leaf002" parent="." index="3"]
+surface_material_override/0 = ExtResource("2_ijpj4")
+
+[node name="leaf003" parent="." index="4"]
+surface_material_override/0 = ExtResource("2_ijpj4")

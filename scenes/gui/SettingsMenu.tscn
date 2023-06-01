@@ -1,0 +1,106 @@
+[gd_scene load_steps=2 format=3 uid="uid://caq6t7tfyt5bc"]
+
+[ext_resource type="Script" path="res://scripts/SettingsMenu.gd" id="1_33s7q"]
+
+[node name="SettingsMenuContainer" type="MarginContainer"]
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -1280.0
+offset_right = -982.0
+offset_bottom = 437.0
+grow_horizontal = 0
+theme_override_constants/margin_top = 80
+theme_override_constants/margin_right = 60
+script = ExtResource("1_33s7q")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 2
+size_flags_horizontal = 8
+
+[node name="Title" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 8
+theme_override_font_sizes/font_size = 62
+text = "Settings"
+
+[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_constants/margin_top = 60
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 8
+tooltip_text = "Set a maximum amount of frames per second (FPS)"
+
+[node name="Label" type="Label" parent="VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 0
+theme_override_font_sizes/font_size = 20
+text = "FPS Cap"
+
+[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer/HBoxContainer"]
+layout_mode = 2
+theme_override_constants/margin_right = 10
+
+[node name="FPSOptionButton" type="OptionButton" parent="VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 8
+tooltip_text = "Set a maximum amount of frames per second (FPS)"
+focus_mode = 0
+mouse_default_cursor_shape = 2
+theme_override_font_sizes/font_size = 20
+flat = true
+alignment = 2
+item_count = 7
+selected = 2
+popup/item_0/text = "Off"
+popup/item_0/id = 0
+popup/item_1/text = "30"
+popup/item_1/id = 30
+popup/item_2/text = "60"
+popup/item_2/id = 60
+popup/item_3/text = "75"
+popup/item_3/id = 75
+popup/item_4/text = "120"
+popup/item_4/id = 120
+popup/item_5/text = "144"
+popup/item_5/id = 144
+popup/item_6/text = "240"
+popup/item_6/id = 240
+
+[node name="DisplayFPSCheck" type="CheckBox" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 8
+tooltip_text = "Enable vertical sync"
+focus_mode = 0
+theme_override_font_sizes/font_size = 20
+text = "Display FPS"
+flat = true
+
+[node name="VsyncCheck" type="CheckBox" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 8
+tooltip_text = "Enable VSync"
+focus_mode = 0
+theme_override_font_sizes/font_size = 20
+text = "VSync"
+flat = true
+
+[node name="MarginContainer2" type="MarginContainer" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_constants/margin_top = 40
+
+[node name="BackButton" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 8
+tooltip_text = "Head back to main menu"
+focus_mode = 0
+theme_override_font_sizes/font_size = 20
+text = "Back"
+flat = true
+
+[connection signal="item_selected" from="VBoxContainer/HBoxContainer/FPSOptionButton" to="." method="_on_fps_option_button_item_selected"]
+[connection signal="pressed" from="VBoxContainer/DisplayFPSCheck" to="." method="_on_display_fps_check_pressed"]
+[connection signal="pressed" from="VBoxContainer/VsyncCheck" to="." method="_on_vsync_check_pressed"]
+[connection signal="pressed" from="VBoxContainer/BackButton" to="." method="_on_back_button_pressed"]

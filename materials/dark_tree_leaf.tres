@@ -1,0 +1,16 @@
+[gd_resource type="ShaderMaterial" load_steps=4 format=3 uid="uid://dqhlyjdrxx3b0"]
+
+[ext_resource type="Shader" path="res://shaders/leaf.gdshader" id="1_t41pp"]
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_gmy3d"]
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_pio3g"]
+noise = SubResource("FastNoiseLite_gmy3d")
+
+[resource]
+render_priority = 0
+shader = ExtResource("1_t41pp")
+shader_parameter/wind_force = 0.3
+shader_parameter/time_mult = 0.02
+shader_parameter/leaf_color = Color(0.0941176, 0.380392, 0.0705882, 1)
+shader_parameter/wind_noise = SubResource("NoiseTexture2D_pio3g")

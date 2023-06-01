@@ -1,8 +1,8 @@
-[gd_scene load_steps=4 format=3 uid="uid://bpo4xw8b1gi6a"]
+[gd_scene load_steps=4 format=3]
 
 [ext_resource type="PackedScene" uid="uid://bqlpqre5x1pvw" path="res://scenes/world.tscn" id="1_p5jtc"]
 [ext_resource type="PackedScene" uid="uid://bsc2vaqlbyejn" path="res://scenes/assets/player.tscn" id="2_4feqx"]
-[ext_resource type="PackedScene" uid="uid://xi3lpw1qpqc6" path="res://scenes/assets/FPSLabel.tscn" id="3_gpggm"]
+[ext_resource type="PackedScene" uid="uid://xi3lpw1qpqc6" path="res://scenes/gui/FPSLabel.tscn" id="3_gpggm"]
 
 [node name="Game" type="Node3D"]
 

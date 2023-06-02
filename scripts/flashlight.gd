@@ -1,4 +1,4 @@
-extends Node3D
+extends Interactive
 
 @export var is_on: bool = true
 @export var light_intensity: float = 1.0

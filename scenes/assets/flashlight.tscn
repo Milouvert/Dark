@@ -11,9 +11,10 @@ script = ExtResource("1_nwep7")
 [node name="transform" type="Node3D" parent="torch"]
 
 [node name="SpotLight3D" type="SpotLight3D" parent="torch/transform"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.348242)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.359083)
 light_color = Color(1, 0.964706, 0.866667, 1)
 shadow_enabled = true
+distance_fade_enabled = true
 spot_range = 25.0
 spot_angle = 25.0
 

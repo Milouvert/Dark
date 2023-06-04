@@ -1,8 +1,8 @@
 [gd_scene load_steps=4 format=3 uid="uid://cm6pig7ljcj8t"]
 
 [ext_resource type="PackedScene" uid="uid://bkxyw1e7m7jat" path="res://blender/tree.blend" id="1_u7d2k"]
-[ext_resource type="Material" uid="uid://c8toqxxery7xo" path="res://materials/light_tree_leaf.tres" id="2_ng2k1"]
-[ext_resource type="Material" uid="uid://dqhlyjdrxx3b0" path="res://materials/dark_tree_leaf.tres" id="3_cy43a"]
+[ext_resource type="Material" uid="uid://c8toqxxery7xo" path="res://misc/materials/light_tree_leaf.tres" id="2_ng2k1"]
+[ext_resource type="Material" uid="uid://dqhlyjdrxx3b0" path="res://misc/materials/dark_tree_leaf.tres" id="3_cy43a"]
 
 [node name="tree" instance=ExtResource("1_u7d2k")]
 

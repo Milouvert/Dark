@@ -1,6 +1,5 @@
-[gd_scene load_steps=13 format=3 uid="uid://bqlpqre5x1pvw"]
+[gd_scene load_steps=10 format=3 uid="uid://bqlpqre5x1pvw"]
 
-[ext_resource type="Script" path="res://scripts/world.gd" id="1_8ld2i"]
 [ext_resource type="PackedScene" uid="uid://cvqv8qer6c10e" path="res://scenes/assets/ground.tscn" id="1_nlgwa"]
 [ext_resource type="PackedScene" uid="uid://cqhstaabfssnt" path="res://scenes/assets/campfire.tscn" id="3_p2k0c"]
 [ext_resource type="PackedScene" uid="uid://cm6pig7ljcj8t" path="res://scenes/assets/tree.tscn" id="6_f0x3a"]
@@ -9,34 +8,9 @@
 [ext_resource type="PackedScene" uid="uid://cyb8xai2fuawg" path="res://scenes/assets/pine.tscn" id="7_l3s2v"]
 [ext_resource type="PackedScene" uid="uid://d1dujq6eht0tu" path="res://blender/garbage.blend" id="8_dosn1"]
 [ext_resource type="PackedScene" uid="uid://hwpu8xwkhkxs" path="res://scenes/assets/flashlight.tscn" id="9_ip7nr"]
-
-[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_yvhsq"]
-sky_top_color = Color(0.0588235, 0.0784314, 0.164706, 1)
-sky_horizon_color = Color(0.579412, 0.57451, 0.585294, 1)
-sky_energy_multiplier = 0.2
-ground_bottom_color = Color(0.258824, 0.219608, 0.176471, 1)
-ground_horizon_color = Color(0.579412, 0.57451, 0.585294, 1)
-
-[sub_resource type="Sky" id="Sky_agukp"]
-sky_material = SubResource("ProceduralSkyMaterial_yvhsq")
-
-[sub_resource type="Environment" id="Environment_w6mqk"]
-background_mode = 2
-sky = SubResource("Sky_agukp")
-tonemap_mode = 2
-ssao_enabled = true
-sdfgi_enabled = true
-glow_enabled = true
-fog_light_color = Color(0.137255, 0.152941, 0.176471, 1)
-fog_density = 0.1
-volumetric_fog_enabled = true
-volumetric_fog_density = 0.1
+[ext_resource type="PackedScene" uid="uid://brcw6pbo160l5" path="res://scenes/assets/billboard/billboard.tscn" id="10_wvnay"]
 
 [node name="world" type="Node3D"]
-script = ExtResource("1_8ld2i")
-
-[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
-environment = SubResource("Environment_w6mqk")
 
 [node name="ground" parent="." instance=ExtResource("1_nlgwa")]
 
@@ -155,4 +129,8 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 41.7109, 0, -28.4053)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.72418, 0, -2.81796)
 
 [node name="flashlight" parent="." instance=ExtResource("9_ip7nr")]
-transform = Transform3D(0.499091, -0.000623862, 0.0301345, 0, 0.499893, 0.0103491, -0.030141, -0.0103302, 0.498984, 2.70449, 0.888915, -2.82585)
+transform = Transform3D(0.999585, -0.000700923, -0.0288052, -0.00162843, 0.996732, -0.0807628, 0.0287677, 0.0807762, 0.996317, 2.7274, 0.853941, -2.86425)
+
+[node name="billboard" parent="." instance=ExtResource("10_wvnay")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.29439, 2.38419e-07, -7.60902)
+visible = false

@@ -1,0 +1,42 @@
+[gd_scene load_steps=7 format=3 uid="uid://brcw6pbo160l5"]
+
+[ext_resource type="PackedScene" uid="uid://bb03xx23g6lft" path="res://blender/billboard.blend" id="1_3olpj"]
+[ext_resource type="Script" path="res://scripts/billboard.gd" id="2_8bnfi"]
+[ext_resource type="PackedScene" uid="uid://be1i7tc72hncn" path="res://scenes/assets/billboard/billboard_ui.tscn" id="2_8lxrh"]
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_40lym"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_u1coe"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_cqoom"]
+size = Vector3(3.49322, 1.9886, 0.0884563)
+
+[node name="billboard" instance=ExtResource("1_3olpj")]
+script = ExtResource("2_8bnfi")
+
+[node name="collision" parent="." index="1"]
+input_ray_pickable = false
+
+[node name="PanelViewport" type="SubViewport" parent="." index="2"]
+size = Vector2i(1280, 720)
+
+[node name="billboard_ui" parent="PanelViewport" index="0" instance=ExtResource("2_8lxrh")]
+
+[node name="Camera3D" type="Camera3D" parent="." index="3"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.14006, 1.945)
+projection = 1
+size = 2.393
+
+[node name="Screen" type="MeshInstance3D" parent="." index="4"]
+transform = Transform3D(1.733, 0, 0, 0, -6.99382e-10, -0.987, 0, 0.016, -4.31431e-08, 0, 2.01573, 0.0784598)
+mesh = SubResource("PlaneMesh_40lym")
+skeleton = NodePath("../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_u1coe")
+
+[node name="Area3D" type="Area3D" parent="." index="5"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.01695, 0.0454422)
+collision_layer = 2
+collision_mask = 2
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D" index="0"]
+shape = SubResource("BoxShape3D_cqoom")

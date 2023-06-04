@@ -7,7 +7,7 @@ func _ready():
 	SettingsMenu.back_button_pressed.connect(back_button_pressed)
 
 func _on_join_pressed():
-	get_tree().change_scene_to_file("res://scenes/Game.tscn")
+	get_tree().change_scene_to_file("res://scenes/Lobby.tscn")
 
 func _on_quit_pressed():
 	get_tree().quit()

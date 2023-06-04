@@ -1,0 +1,20 @@
+[gd_scene load_steps=6 format=3 uid="uid://c5gnlje6b0yfu"]
+
+[ext_resource type="Script" path="res://scripts/Lobby.gd" id="1_tlae6"]
+[ext_resource type="PackedScene" uid="uid://bqlpqre5x1pvw" path="res://scenes/world.tscn" id="1_xgb20"]
+[ext_resource type="PackedScene" uid="uid://bsc2vaqlbyejn" path="res://scenes/player.tscn" id="2_3gqtl"]
+[ext_resource type="PackedScene" uid="uid://xi3lpw1qpqc6" path="res://scenes/gui/FPSLabel.tscn" id="3_f6p18"]
+[ext_resource type="Environment" uid="uid://c8f2crtk5q817" path="res://misc/environments/dense_volumetric_fog.tres" id="5_y775d"]
+
+[node name="Lobby" type="Node3D"]
+script = ExtResource("1_tlae6")
+
+[node name="world" parent="." instance=ExtResource("1_xgb20")]
+
+[node name="player" parent="." instance=ExtResource("2_3gqtl")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 7.79726)
+
+[node name="FPSLabel" parent="." instance=ExtResource("3_f6p18")]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = ExtResource("5_y775d")

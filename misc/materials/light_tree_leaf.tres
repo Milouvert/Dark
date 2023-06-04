@@ -1,15 +1,16 @@
 [gd_resource type="ShaderMaterial" load_steps=4 format=3 uid="uid://c8toqxxery7xo"]
 
-[ext_resource type="Shader" path="res://shaders/leaf.gdshader" id="1_oabc7"]
+[ext_resource type="Shader" path="res://shaders/leaf.gdshader" id="1_6rn5g"]
 
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_6flg2"]
 
 [sub_resource type="NoiseTexture2D" id="NoiseTexture2D_8keui"]
+seamless = true
 noise = SubResource("FastNoiseLite_6flg2")
 
 [resource]
 render_priority = 0
-shader = ExtResource("1_oabc7")
+shader = ExtResource("1_6rn5g")
 shader_parameter/wind_force = 0.3
 shader_parameter/time_mult = 0.02
 shader_parameter/leaf_color = Color(0.435294, 0.647059, 0.266667, 1)

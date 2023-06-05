@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://byeip1tt0xnl"]
+[gd_scene load_steps=9 format=3 uid="uid://byeip1tt0xnl"]
 
 [ext_resource type="PackedScene" uid="uid://bqlpqre5x1pvw" path="res://scenes/world.tscn" id="1_6cjy5"]
 [ext_resource type="Script" path="res://scripts/MainMenu.gd" id="1_6fmyw"]
@@ -29,92 +29,6 @@ fog_density = 0.1
 volumetric_fog_density = 0.1
 volumetric_fog_albedo = Color(0.572549, 0.572549, 0.572549, 1)
 
-[sub_resource type="Animation" id="Animation_1defv"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Menu/MainMarginContainer:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(0, 0)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Background/SubViewportContainer/SubViewport/Camera3D:position")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector3(-2.7322, 2.37452, 6.7575)]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("Menu/SettingsMenuContainer:position")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(1280, 0)]
-}
-
-[sub_resource type="Animation" id="Animation_sk0cn"]
-resource_name = "open_settings"
-length = 0.5
-step = 0.05
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Menu/MainMarginContainer:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.15),
-"transitions": PackedFloat32Array(-2, -2),
-"update": 0,
-"values": [Vector2(0, 0), Vector2(-204, 0)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Background/SubViewportContainer/SubViewport/Camera3D:position")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.5),
-"transitions": PackedFloat32Array(-2, -2),
-"update": 0,
-"values": [Vector3(-2.7322, 2.37452, 6.7575), Vector3(3.14503, 2.37452, 6.7575)]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("Menu/SettingsMenuContainer:position")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0.35, 0.5),
-"transitions": PackedFloat32Array(-2, -2),
-"update": 0,
-"values": [Vector2(1280, 0), Vector2(982, 0)]
-}
-
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_sxsxo"]
-_data = {
-"RESET": SubResource("Animation_1defv"),
-"open_settings": SubResource("Animation_sk0cn")
-}
-
 [node name="MainMenu" type="CanvasLayer"]
 script = ExtResource("1_6fmyw")
 
@@ -123,29 +37,19 @@ script = ExtResource("1_6fmyw")
 [node name="world" parent="Background" instance=ExtResource("1_6cjy5")]
 
 [node name="moon" parent="Background" instance=ExtResource("3_oqsob")]
-transform = Transform3D(0.598281, 0.624941, -0.501507, 0.206707, 0.484322, 0.850121, 0.774165, -0.612276, 0.160581, 11.7794, 8.56883, -9.74826)
+transform = Transform3D(0.0499461, 0.86253, -0.503536, 0.206707, 0.484322, 0.850121, 0.977127, -0.146544, -0.154101, 11.7794, 8.56883, -9.74826)
 
-[node name="SubViewportContainer" type="SubViewportContainer" parent="Background"]
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-stretch = true
-stretch_shrink = 2
+[node name="MoonCam" type="Camera3D" parent="Background"]
+transform = Transform3D(0.821438, 7.73106e-08, -0.570298, -8.9407e-08, 1, 6.7829e-09, 0.570298, 4.54169e-08, 0.821438, 11.2006, 8.569, -8.91534)
 
-[node name="SubViewport" type="SubViewport" parent="Background/SubViewportContainer"]
-handle_input_locally = false
-size = Vector2i(640, 360)
-render_target_update_mode = 4
-
-[node name="Camera3D" type="Camera3D" parent="Background/SubViewportContainer/SubViewport"]
+[node name="MainCam" type="Camera3D" parent="Background"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.7322, 2.37452, 6.7575)
+current = true
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="Background"]
 environment = SubResource("Environment_pxaa7")
 
-[node name="Menu" type="Control" parent="."]
+[node name="GUI" type="Control" parent="."]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -153,27 +57,27 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="MainMarginContainer" type="MarginContainer" parent="Menu"]
+[node name="MainMarginContainer" type="MarginContainer" parent="GUI"]
 layout_mode = 1
 offset_right = 204.0
 offset_bottom = 391.0
 theme_override_constants/margin_left = 60
 theme_override_constants/margin_top = 80
 
-[node name="VBoxContainer" type="VBoxContainer" parent="Menu/MainMarginContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="GUI/MainMarginContainer"]
 layout_mode = 2
 
-[node name="Title" type="Label" parent="Menu/MainMarginContainer/VBoxContainer"]
+[node name="Title" type="Label" parent="GUI/MainMarginContainer/VBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 0
 theme_override_font_sizes/font_size = 62
 text = "Dark"
 
-[node name="MarginContainer" type="MarginContainer" parent="Menu/MainMarginContainer/VBoxContainer"]
+[node name="MarginContainer" type="MarginContainer" parent="GUI/MainMarginContainer/VBoxContainer"]
 layout_mode = 2
 theme_override_constants/margin_top = 80
 
-[node name="Join" type="Button" parent="Menu/MainMarginContainer/VBoxContainer"]
+[node name="Join" type="Button" parent="GUI/MainMarginContainer/VBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 0
 focus_mode = 0
@@ -181,7 +85,7 @@ theme_override_font_sizes/font_size = 24
 text = "Join"
 flat = true
 
-[node name="Settings" type="Button" parent="Menu/MainMarginContainer/VBoxContainer"]
+[node name="Settings" type="Button" parent="GUI/MainMarginContainer/VBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 0
 focus_mode = 0
@@ -189,7 +93,7 @@ theme_override_font_sizes/font_size = 24
 text = "Settings"
 flat = true
 
-[node name="Quit" type="Button" parent="Menu/MainMarginContainer/VBoxContainer"]
+[node name="Quit" type="Button" parent="GUI/MainMarginContainer/VBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 0
 size_flags_vertical = 0
@@ -198,18 +102,13 @@ theme_override_font_sizes/font_size = 24
 text = "Quit"
 flat = true
 
-[node name="SettingsMenuContainer" parent="Menu" instance=ExtResource("4_df2c3")]
+[node name="SettingsMenuContainer" parent="GUI" instance=ExtResource("4_df2c3")]
 layout_mode = 1
 offset_left = 0.0
 offset_right = 298.0
 
 [node name="FPSLabel" parent="." instance=ExtResource("3_jb3qv")]
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-libraries = {
-"": SubResource("AnimationLibrary_sxsxo")
-}
-
-[connection signal="pressed" from="Menu/MainMarginContainer/VBoxContainer/Join" to="." method="_on_join_pressed"]
-[connection signal="pressed" from="Menu/MainMarginContainer/VBoxContainer/Settings" to="." method="_on_settings_pressed"]
-[connection signal="pressed" from="Menu/MainMarginContainer/VBoxContainer/Quit" to="." method="_on_quit_pressed"]
+[connection signal="pressed" from="GUI/MainMarginContainer/VBoxContainer/Join" to="." method="_on_join_pressed"]
+[connection signal="pressed" from="GUI/MainMarginContainer/VBoxContainer/Settings" to="." method="_on_settings_pressed"]
+[connection signal="pressed" from="GUI/MainMarginContainer/VBoxContainer/Quit" to="." method="_on_quit_pressed"]

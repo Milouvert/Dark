@@ -6,6 +6,8 @@ signal back_button_pressed
 @onready var FPS_CAP_OPTION = $VBoxContainer/HBoxContainer/FPSOptionButton
 @onready var VSYNC_CHECKBOX = $VBoxContainer/VsyncCheck
 
+var shown = false
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	DISPLAY_FPS_CHECKBOX.set_pressed(Settings.display_fps)

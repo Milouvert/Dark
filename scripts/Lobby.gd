@@ -10,6 +10,7 @@ var read_speed = 0.2
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	PLAYER_CAM.current = true
 	pass # Replace with function body.
 
 func _unhandled_input(_event):
@@ -20,12 +21,12 @@ func _unhandled_input(_event):
 			Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 			is_reading = false
 			BILLBOARD.emit_signal("mouse_exit")
-			CameraTransition.transition(BILLBOARD_CAM, PLAYER_CAM, read_speed)
+			Transition.camera(BILLBOARD_CAM, PLAYER_CAM, read_speed)
 		else:
 			Input.mouse_mode = Input.MOUSE_MODE_CONFINED
 			is_reading = true
 			BILLBOARD.emit_signal("mouse_enter")
-			CameraTransition.transition(PLAYER_CAM, BILLBOARD_CAM, read_speed)
+			Transition.camera(PLAYER_CAM, BILLBOARD_CAM, read_speed)
 		
 		PLAYER.movement_disabled = is_reading
 		

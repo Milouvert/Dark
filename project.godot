@@ -19,15 +19,13 @@ config/icon="res://icon.svg"
 [autoload]
 
 Settings="*res://scripts/global/settings.gd"
-CameraTransition="*res://scenes/global/camera_transition.tscn"
+Transition="*res://scenes/global/transition.tscn"
 
 [display]
 
 window/size/viewport_width=1280
 window/size/viewport_height=720
 window/size/mode=3
-window/stretch/mode="canvas_items"
-window/stretch/aspect="expand"
 window/vsync/vsync_mode=0
 
 [editor]

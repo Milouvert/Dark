@@ -1,6 +1,6 @@
 extends Node3D
 
-@onready var CAM: Camera3D = $Camera3D
+@onready var CAM: Camera3D = $TransCam
 
 var tween: Tween
 

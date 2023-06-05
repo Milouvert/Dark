@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://bawb5sx2jmws3"]
+
+[ext_resource type="Script" path="res://scripts/global/transition.gd" id="1_d0tte"]
+
+[node name="transition" type="Node3D"]
+script = ExtResource("1_d0tte")
+
+[node name="TransCam" type="Camera3D" parent="."]
